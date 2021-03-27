@@ -1,10 +1,12 @@
-const Todos = ({ todos }) => {
+import { ListItem } from "@material-ui/core";
+
+const Todos = ({ todos, deleteTodos }) => {
   const todoList = todos.length ? (
     todos.map((todo) => {
       return (
-        <div className="collection-item" key={todo.id}>
-          <span>{todo.content}</span>
-        </div>
+        <ListItem className="collection-item" key={todo.id}>
+          <span onClick={() => deleteTodos(todo.id)}>{todo.content}</span>
+        </ListItem>
       );
     })
   ) : (

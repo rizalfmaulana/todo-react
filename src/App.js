@@ -7,10 +7,15 @@ function App() {
     { id: 1, content: "buy some coffee" },
     { id: 2, content: "play video games" },
   ]);
+
+  const deleteTodos = (id) => {
+    let tod = todos.filter((todo) => todo.id !== id);
+    setTodos(tod);
+  };
   return (
-    <div className="App">
+    <div className="todo-app container">
       <h1 className="center blue-text">Todo's</h1>
-      <Todos todos={todos} />
+      <Todos todos={todos} deleteTodos={deleteTodos} />
     </div>
   );
 }

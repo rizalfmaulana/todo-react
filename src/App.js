@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AddForm from "./AddForm";
 import "./App.css";
 import Todos from "./Todos";
 
@@ -16,6 +17,7 @@ function App() {
     <div className="todo-app container">
       <h1 className="center blue-text">Todo's</h1>
       <Todos todos={todos} deleteTodos={deleteTodos} />
+      <AddForm />
     </div>
   );
 }

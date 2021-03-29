@@ -13,11 +13,19 @@ function App() {
     let tod = todos.filter((todo) => todo.id !== id);
     setTodos(tod);
   };
+
+  const addTodos = (todo) => {
+    todo.id = Math.random();
+    setTodos((prevState) => {
+      [...prevState, todo];
+    });
+  };
+
   return (
     <div className="todo-app container">
       <h1 className="center blue-text">Todo's</h1>
       <Todos todos={todos} deleteTodos={deleteTodos} />
-      <AddForm />
+      <AddForm addTodos={addTodos} />
     </div>
   );
 }

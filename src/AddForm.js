@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 
-const AddForm = () => {
+const AddForm = ({ addTodos }) => {
   const [content, setContent] = useState("");
 
   const handleChange = (e) => {
@@ -10,6 +10,8 @@ const AddForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    addTodos(content);
+    setContent("");
   };
   return (
     <div>

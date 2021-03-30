@@ -16,7 +16,7 @@ function App() {
         <Route path="/todolist">
           <TodoList />
         </Route>
-        <Route path="/:post_id">
+        <Route path="/blogs/:id">
           <Post />
         </Route>
       </Switch>

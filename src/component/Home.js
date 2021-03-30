@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [post, setPost] = useState([]);
@@ -15,14 +16,16 @@ const Home = () => {
       return (
         <div className="post card" key={posts.id}>
           <div className="card-content">
-            <span className="card-title">{posts.title}</span>
+            <Link to={`/blogs/${posts.id}`}>
+              <span className="card-title">{posts.title}</span>
+            </Link>
             <p>{posts.body}</p>
           </div>
         </div>
       );
     })
   ) : (
-    <div className="center">No posting </div>
+    <div className="center">Loading... </div>
   );
   return (
     <div className="container">

@@ -4,9 +4,9 @@ const Navbar = () => {
   return (
     <nav className="nav-wrapper blue darken-3">
       <div className="container">
-        <a href="google.com" className="brand-logo">
+        <Link to="/" className="brand-logo">
           Blog
-        </a>
+        </Link>
         <ul className="right">
           <li>
             <Link to="/">Home</Link>

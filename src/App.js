@@ -1,32 +1,22 @@
-import { useState } from "react";
-import AddForm from "./AddForm";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Todos from "./Todos";
+import Home from "./component/Home";
+import Navbar from "./component/Navbar";
+import TodoList from "./todolist/TodoList";
 
 function App() {
-  const [todos, setTodos] = useState([
-    { id: 1, content: "buy some coffee" },
-    { id: 2, content: "play video games" },
-  ]);
-
-  const deleteTodos = (id) => {
-    let tod = todos.filter((todo) => todo.id !== id);
-    setTodos(tod);
-  };
-
-  const addTodos = (todo) => {
-    const tod = { content: todo };
-    tod.id = Math.random();
-    const to = [...todos, tod];
-    setTodos(to);
-  };
-
   return (
-    <div className="todo-app container">
-      <h1 className="center blue-text">Todo's</h1>
-      <Todos todos={todos} deleteTodos={deleteTodos} />
-      <AddForm addTodos={addTodos} />
-    </div>
+    <Router>
+      <Navbar />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/todolist">
+          <TodoList />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

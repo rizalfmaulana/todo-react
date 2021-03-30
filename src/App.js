@@ -15,10 +15,10 @@ function App() {
   };
 
   const addTodos = (todo) => {
-    todo.id = Math.random();
-    setTodos((prevState) => {
-      [...prevState, todo];
-    });
+    const tod = { content: todo };
+    tod.id = Math.random();
+    const to = [...todos, tod];
+    setTodos(to);
   };
 
   return (

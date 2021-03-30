@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import logo from "../Scooter_Outline.svg";
 
 const Home = () => {
   const [post, setPost] = useState([]);
@@ -15,6 +16,7 @@ const Home = () => {
     post.map((posts) => {
       return (
         <div className="post card" key={posts.id}>
+          <img src={logo} alt="logo" />
           <div className="card-content">
             <Link to={`/blogs/${posts.id}`}>
               <span className="card-title">{posts.title}</span>
@@ -28,7 +30,7 @@ const Home = () => {
     <div className="center">Loading... </div>
   );
   return (
-    <div className="container">
+    <div className="container home">
       <h4 className="center">Home</h4>
       {postList}
     </div>

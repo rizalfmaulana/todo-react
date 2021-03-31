@@ -10,7 +10,7 @@ function App() {
     <Router>
       <Navbar />
       <Switch>
-        <Route exact path="/">
+        {/* <Route exact path="/">
           <Home />
         </Route>
         <Route path="/todolist">
@@ -18,7 +18,10 @@ function App() {
         </Route>
         <Route path="/blogs/:id">
           <Post />
-        </Route>
+        </Route> */}
+        <Route exact path="/" component={Home} />
+        <Route path="/todolist" component={TodoList} />
+        <Route path="/blogs/:id" component={Post} />
       </Switch>
     </Router>
   );

@@ -1,27 +1,28 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import logo from "../Scooter_Outline.svg";
 
-const Home = () => {
-  const [post, setPost] = useState([]);
-  useEffect(() => {
-    axios.get("https://jsonplaceholder.typicode.com/posts").then((res) => {
-      console.log(res);
-      setPost(res.data.slice(0, 10));
-    });
-  }, []);
+const Home = ({ posts }) => {
+  //   const [post, setPost] = useState([]);
+  //   useEffect(() => {
+  //     axios.get("https://jsonplaceholder.typicode.com/posts").then((res) => {
+  //       console.log(res);
+  //       setPost(res.data.slice(0, 10));
+  //     });
+  //   }, []);
 
-  const postList = post.length ? (
-    post.map((posts) => {
+  const postList = posts.length ? (
+    posts.map((post) => {
       return (
-        <div className="post card" key={posts.id}>
+        <div className="post card" key={post.id}>
           <img src={logo} alt="logo" />
           <div className="card-content">
-            <Link to={`/blogs/${posts.id}`}>
-              <span className="card-title">{posts.title}</span>
+            <Link to={`/blogs/${post.id}`}>
+              <span className="card-title">{post.title}</span>
             </Link>
-            <p>{posts.body}</p>
+            <p>{post.body}</p>
           </div>
         </div>
       );
@@ -37,4 +38,10 @@ const Home = () => {
   );
 };
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    posts: state.posts,
+  };
+};
+
+export default connect(mapStateToProps)(Home);
